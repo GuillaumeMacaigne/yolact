@@ -128,6 +128,19 @@ dataset_base = Config({
     'label_map': None
 })
 
+midgard_dataset = dataset_base.copy({
+    'name': 'Midgard Dataset',
+
+    'train_images': './data/midgard/images/',
+    'train_info':   './data/midgard/annotations/instances_train.json',
+
+    'valid_images': './data/midgard/images/',
+    'valid_info':   './data/midgard/annotations/instances_val.json',
+
+    'has_gt': True,
+    'class_names': ('burnt vegetation', 'unburnt vegetation', 'burnt soil', 'unburnt soil', 'construct', 'water')
+})
+
 coco2014_dataset = dataset_base.copy({
     'name': 'COCO 2014',
     
@@ -657,7 +670,8 @@ yolact_base_config = coco_base_config.copy({
     'name': 'yolact_base',
 
     # Dataset stuff
-    'dataset': coco2017_dataset,
+    #Guillaume 'dataset': coco2017_dataset,
+    'dataset': midgard_dataset,
     'num_classes': len(coco2017_dataset.class_names) + 1,
 
     # Image Size
